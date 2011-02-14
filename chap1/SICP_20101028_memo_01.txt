@@ -1,0 +1,64 @@
+
+; expmod in fermat-test (p.28) #########
+; base^exp MOD m
+
+(define (square x) (* x x))
+
+(define (expmod-f base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (remainder (square (expmod-f base (/ exp 2) m))
+                    m))
+        (else
+         (remainder (* base (expmod-f base (- exp 1) m))
+                    m))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################
+q1.26 do with 'square'
+
+>(expmod 2 8 8)
+> (expmod 2 4 8)
+> >(expmod 2 2 8)
+> > (expmod 2 1 8)
+> > >(expmod 2 0 8)
+< < <1
+< < 2
+< <4
+< 0
+<0
+0
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

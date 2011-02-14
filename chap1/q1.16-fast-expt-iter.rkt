@@ -1,0 +1,36 @@
+(define (square x) (* x x))
+
+(define (fast-expt b n)
+  (fast-expt-iter b n 1))
+
+(define (fast-expt-iter b n a)
+  (cond ((= n 0) a)
+        ((even? n) (fast-expt-iter (square b) (/ n 2) a))
+        (else (fast-expt-iter b (- n 1) (* a b)))))
+
+(trace fast-expt-iter)
+(fast-expt 2 6)
+
+;>(fast-expt-iter 2 6 1)
+; (2)^6 * 1
+;>(fast-expt-iter 4 3 1)
+; (2^2)^3 * 1
+;>(fast-expt-iter 4 2 4)
+; (2^2)^2 * 2^2
+;>(fast-expt-iter 16 1 4)
+; (2^2^2)^1 * 2^2
+;>(fast-expt-iter 16 0 64)
+; (2^2^2)^0 * 2^2 * 2^2^2
+;              4  * 16
+
+
+
+
+
+
+
+
+; error
+;       ((even? n) (fast-expt-iter (square a) b (/ n 2)))
+;       (else (* b (fast-expt-iter a b (- n 1)))))))
+

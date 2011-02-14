@@ -1,0 +1,13 @@
+(define true #t)
+(define false #f)
+
+(define (disp x)
+  (display x)
+  (newline))
+
+(define (square x)
+  (* x x))
+
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))

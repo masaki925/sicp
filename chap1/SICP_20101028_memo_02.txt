@@ -1,0 +1,55 @@
+; Alyssa ##############
+; fast-expt (p.25)
+
+(define (square x) (* x x))
+
+(define (fast-expt b n)
+  (cond ((= n 0) 1)
+        ((even? n) (square (fast-expt b (/ n 2))))
+        (else (* b (fast-expt b (- n 1))))))
+
+
+
+
+(define (expmod base exp m)
+  (remainder (fast-expt base exp) m))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################
+q1.26 do with '*'
+
+>(expmod 2 3 3)
+> (expmod 2 2 3)
+> >(expmod 2 1 3)
+> > (expmod 2 0 3)
+< < 1
+< <2
+> >(expmod 2 1 3)
+> > (expmod 2 0 3)
+< < 1
+< <2
+< 1
+<2
+2
+ 

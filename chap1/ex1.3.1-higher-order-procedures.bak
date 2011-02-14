@@ -1,0 +1,14 @@
+(define (sum-integers a b)
+  (if (> a b)
+      0
+      (+ a (sum-integers (+ a 1) b))))
+
+(sum-integers 2 4)
+
+(define (cube x) (* x x x))
+
+(define (sum-cubes a b)
+  (if (> a b)
+      0
+      (+ (cube a) (sum-integers (+ a 1) b))))
+
