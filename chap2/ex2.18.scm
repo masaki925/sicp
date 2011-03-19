@@ -22,16 +22,18 @@
 
 (mydisplay "----------------------")
 (mydisplay "2) append したもの")
-(define (myreverse2 items)
-(let ((rest (cdr items)))
-  (if (null? rest)
-    items
-    (append (myreverse2 (cdr items)) (cons (car items) nil)))))
+(define (myreverse2 l)
+  (define (myreverse2-iter items r)
+    (if (null? items)
+        r
+        (myreverse2-iter (cdr items) (cons (car items) r))))
+  (trace myreverse2-iter)
+  (myreverse2-iter l '()))
 
 (mydisplay "(myreverse2 (list 1 3 5 7))\n")
 (trace myreverse2)
 (mydisplay (myreverse2 odds))
-;(mydisplay (myreverse '()))
+;(mydisplay (myreverse2 '()))
 
 ;- 並びの最後はnil で表現する
 ;- cons でリストに値を追加するには (cons (値) (list))

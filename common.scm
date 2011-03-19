@@ -3,5 +3,6 @@
 
 (define nil '())
 
-(define (mydisplay arg) (display arg)(newline))
+(define (p arg) (display arg)(newline))
 
+(define (square x) (* x x)) 

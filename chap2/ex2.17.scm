@@ -1,6 +1,6 @@
 (require "../common.scm")
 
-(mydisplay "ex2.17: 与えられた(空でない) リストの最後の要素だけからなるリストを返す手続き last-pair")
+(p "ex2.17: 与えられた(空でない) リストの最後の要素だけからなるリストを返す手続き last-pair")
 
 (define odds (list 1 3 5 7))
 
@@ -16,7 +16,7 @@
       (last-pair rest))))
 
 (trace last-pair)
-(mydisplay "(last-pair (list 1 3 5 7))\n")
-(mydisplay (last-pair odds))
+(p "(last-pair (list 1 3 5 7))\n")
+(p (last-pair odds))
 ;(display (last-pair '()))
 

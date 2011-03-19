@@ -23,7 +23,7 @@
 ; リスト coin-values の順は, cc の答えに影響があるか. なぜか.
 (mydisplay "* normal order----")
 (mydisplay "(cc 100 us-coins)")
-(trace cc)
+;(trace cc)
 (mydisplay (cc 100 us-coins))
 (mydisplay "(cc 50 uk-coins)")
 (mydisplay (cc 50 uk-coins))
@@ -49,7 +49,7 @@
 ;                 (cc 95 (1))                        ; …  20通り
 
 
-; イメージ
+; イメージ(reverse)
 ;(cc 100 us-coins) #=> 292
 ;
 ;                 (cc 100 (1 5 10 25 50))
