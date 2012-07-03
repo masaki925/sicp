@@ -42,20 +42,12 @@
 (define (data-of-rec record)
   (cadr record))
 
-; table
-;   assocのcdr ダウンが木を辿る操作になる
-(define (make-table)
-  (let ((local-table (cons '*table* nil)))
-    (define (tree-root)
-      (cdr local-table))
-    (define (set-tree-root! node)
-      (set-cdr! local-table node))
     (define (node-lookup key node)
       (if (null? node)
         false
         (let ((cur-entry (entry node))
               (cur-key (key-of-rec (entry node))))
-          (cond ((= key cur-key) cur-entry)
+          (cond ((= key cur-key) (cdr cur-entry))
                 ((< key cur-key)
                  (node-lookup
                    key
@@ -64,8 +56,6 @@
                  (node-lookup
                    key
                    (right-branch node)))))))
-    (define (lookup key)
-      (node-lookup key (cdr local-table)))
 
     (define (node-insert key data node)
       (let ((cur-entry (entry node))
@@ -89,6 +79,18 @@
                      (make-record key data)))
                  (node-insert
                    key data (right-branch node)))))))
+; table
+;   assocのcdr ダウンが木を辿る操作になる
+(define (make-table)
+  (let ((local-table (cons '*table* nil)))
+    (define (tree-root)
+      (cdr local-table))
+    (define (set-tree-root! node)
+      (set-cdr! local-table node))
+
+    (define (lookup key)
+      (node-lookup key (cdr local-table)))
+
     (define (insert! key data)
       (if (null? (tree-root))
         (set-tree-root!
@@ -101,6 +103,7 @@
             ((eq? m 'insert-proc!) insert!)
             ((eq? m 'print-table-proc) print-table)
             (else (error "Unknown operation -- TABLE" m))))
+
     (trace set-tree-root!)
     (trace node-insert)
     (trace insert!)
@@ -129,7 +132,7 @@
 (put 3 33)
 (print-table)
 
-(get 6)
+(get 2)
 
 (get 7)
 (put 7 77)
